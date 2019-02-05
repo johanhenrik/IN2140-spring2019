@@ -46,7 +46,10 @@ struct node* create_list(char *line)
 
 void print_list(struct node *list)
 {
-	printf("ls");
+	while (list) {
+		printf("Temporarily element: %c\n", list->character);
+		list = list->next;
+	}
 }
 
 
