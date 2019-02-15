@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
     // Trying to write file-content to the file 'changed lyrics'!
     char file_content[1000];
     size_t read = fread(file_content, sizeof(char), 1000, fs);
+    fclose(fs);
     // Rather than writing to the terminal, I write to a file.
     FILE *fd;
     fd = fopen("changed lyrics.txt", "w");
@@ -36,6 +37,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
     size_t written = fwrite(file_content, sizeof(char), strlen(file_content), fd);
+    fclose(fd);
     printf("Wrote %lu char symbols to file \"changed lyrics.txt\".\n", written);
 
 

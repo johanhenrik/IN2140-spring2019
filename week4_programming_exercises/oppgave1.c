@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
     // Trying to write file-content to the console!
     char file_content[1000];
     size_t read = fread(file_content, sizeof(char), 1000, fs);
+    fclose(fs);
     printf("Content of file is:\n%s\n\n", file_content);
     printf("I received %lu characters!\n", read);
 
