@@ -10,7 +10,8 @@
  *      to the terminal, starting with the first line of the file.
  * 
  * RETURN VALUE
- *      Upon successfully return, one (1) is returned, otherwise 0 is returned.
+ *      Upon successfully return, one (1) is returned, otherwise zero (0) is
+ *      returned.
  */
 int printEveryOtherLineFromFile(char flpt[]) {
     FILE *fs;
@@ -22,10 +23,8 @@ int printEveryOtherLineFromFile(char flpt[]) {
     char file_content[10000];
     size_t read = fread(file_content, sizeof(char), 10000, fs);
     fclose(fs);
-    // unsigned long is used for iterating over the file content, because
-    // I only want to write until I reach the last element from the file
-    // stream. The file-content's length is defines from the fread-function
-    // and its type is an unsigned long.
+	// The file-content's length is defined from the fread function and its
+	// type is an unsigned long. 
     unsigned long i;
     int writing = 1;
     for (i=0; i<read; i++) {
@@ -47,7 +46,7 @@ int printEveryOtherLineFromFile(char flpt[]) {
 int STREQ(char s1[], char s2[]) {
 	int index = 0;
 	for (;;) {
-		if (s1[index] == '\0' && s2[index] == '\0') {
+			if (s1[index] == '\0' && s2[index] == '\0') {
 			return 1;
 		} else if (s1[index] != s2[index]) {
 			return 0;
@@ -57,21 +56,21 @@ int STREQ(char s1[], char s2[]) {
 }
 
 int main() {
-    char user_input[40];
-    char message[] = "This program reads a text file and prints every other "\
-            "line to the terminal.\n"\
-            "Exit with \"QUIT\"\n";
-    printf("%s", message);
-    for (; ;) {
-        printf("Enter file name - ");
-        scanf("%s", &user_input[0]);
-        if (STREQ("QUIT", user_input)) {
-            printf("bye\n");
-            return 0;
-        }
-        if (!printEveryOtherLineFromFile(user_input)) {
-            printf("Could not open file with name %s\n\n", user_input);
-            printf("%s", message);
-        }
-    }
+	char user_input[40];
+	char message[] = "This program reads a text file and prints every other "\
+			"line to the terminal.\n"\
+			"Exit with \"QUIT\"\n"
+			"Enter file name - ";
+	printf("%s", message);
+	for (; ;) {
+		scanf("%s", &user_input[0]);
+		if (STREQ("QUIT", user_input)) {
+			printf("bye\n");
+			return 0;
+		}
+		else if (!printEveryOtherLineFromFile(user_input)) {
+			printf("Could not open file with name %s\n\n", user_input);
+			printf("%s", message);
+		}
+	}
 }
