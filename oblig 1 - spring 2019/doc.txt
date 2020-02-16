@@ -1,0 +1,8 @@
+I've included some code, that I've ended up not using.
+
+For example, the read_line method proved to be useless,
+because 
+
+
+Important, if the program is run without any input arguments,
+then the test function is executed.
